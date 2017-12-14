@@ -1,0 +1,303 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                              %
+%                          Input Sheet for main.f                              %
+&                    Aerosol Database name: logged_bio_fog (03-14-02)          %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                     READ THIS NOW!                                           %
+%    Each line preceded by % is a comment line.                                %
+%    Write input data after each label.                                        %
+%                                                                              %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%  General Problem Description  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   NB: File name max 40 character
+%
+%
+%    the user decides wether to use:
+%        default aerosol classes
+%        default aerosol components
+%        user-defined components or classes.
+%    The choice is between:
+%   ________________________________________________________
+%   |Type | Name of the class        | RH dep. | Source    |
+%   --------------------------------------------------------
+%   |           STANDARD  CLASSES    |         |           |
+%   |  1  Clean-Continental          |  y      |d'Almeida  |
+%   |  2  Average Continental        |  y      |   "       |
+%   |  3  Urban                      |  y      |   "       |
+%   |  4  Clean-Maritime             |  y      |   "       |
+%   |  5  Maritime-Polluted          |  n      |   "       |
+%   |  6  Desert Background          |  indep  |   "       |
+%   |       (wintertime)             |         |           |
+%   |  7  Desert Wind-Carry          |  indep  |   "       |
+%   |       (summertime)             |         |           |
+%   |  8  Background Stratospheric 1 |  indep  | WCP55     |
+%   |  9  Volcanic 1                 |  indep  |   "       |
+%   | 10  Maritime                   |  n      | WMO112    |
+%   | 11  Continental                |  n      |   "       |
+%   | 12  Urban-Industrial           |  n      |   "       |
+%   | 13  Background Stratospheric 2 |  indep  |   "       |
+%   | 14  Volcanic 2                 |  indep  |   "       |
+%   | 15  Rural                      |  y      | LOWTRAN   |
+%   | 16  Urban                      |  y      |  "        |
+%   | 17  Maritime                   |  y      |  "        |
+%   | 18  Tropospheric               |  y      |  "        |
+%   | 19  Biomass Burning            |  n      | Remer('98)|
+%   |------------------------------------------------------|
+%   |            STANDARD COMPONENTS                       |
+%   | 20  Dust-Like 1                |  indep. | WCP55     |
+%   | 21  Dust-Like 2                |  n      | WMO112    |
+%   | 22  Water Soluble 1            |  y      | WCP55     |
+%   | 23  Water Soluble 2            |  n      | WMO112    |
+%   | 24  Soot                       |  y      | WCP55     |
+%   | 25  Oceanic                    |  n      | WMO112    |
+%   | 26  See-Salt (Nuc. mode)       |  y      | d'Alemida |
+%   | 27  See-Salt (Acc. mode)       |  y      |   "       |
+%   | 28  See-Salt (Coa. mode)       |  y      |   "       |
+%   | 29  Mineral Background (Nuc.)  |  indep. |   "       |
+%   | 30  Mineral Background (Acc.)  |  indep. |   "       |
+%   | 31  Mineral Background (Coa.)  |  indep. |   "       |
+%   | 32  Mineral Wind-Carry (Nuc.)  |  indep. |   "       |
+%   | 33  Mineral Wind-Carry (Acc.)  |  indep. |   "       |
+%   | 34  Mineral Wind-Carry (Coa.)  |  indep. |   "       |
+%   | 35  Sulfate                    |  y      |   "       |
+%   |  8  75% H2SO4  1               |  indep. | WCP55     |
+%   | 13  75% H2SO4  2               |  indep. | WMO112    |
+%   |  9  Volcanic Ash 1             |  indep. | WCP55     |
+%   | 14  Volcanic Ash 2             |  indep. | WMO112    |
+%   | 36  Mineral Long-Range Transp. |  indep. | d'Alemida |
+%   |      to Maritime environment   |         |           |
+%   | 37  Mineral Polewards          |  indep. | d'Alemida |
+%   | 38  Small Rural                |  y      | LOWTRAN   |
+%   | 39  Large Rural                |  y      |    "      |
+%   | 40  Small Urban                |  y      |    "      |
+%   | 41  Large urban                |  y      |    "      |
+%   | 42  Maritime-Oceanic Origins   |  y      |    "      |
+%   |_______________________________________________________
+%   | 43  User defined class         |    -    |    (**)   |
+%   --------------------------------------------------------
+%   | 44  Advection Fog 1 (heavy)              |   SH&FE(*)|
+%   | 45  Advection Fog 2 (moderate)           |   SH&FE   |
+%   | 46  Radiation Fog 3 (heavy)              |   SH&FE   |
+%   | 47  Radiation Fog 4 (moderate)           |   SH&FE   |
+%   --------------------------------------------------------
+%     (*)see README.TXT
+&
+%     (**)IMPORTANT!!!!
+% if you choose 'Type of class' equal 43 (that is a user defined one)
+% then you have to specify a value for 'Type of mixing',
+% 'How many components', 'Problem number', 'Phase function tabulation'
+%  and its parameters.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Type of class
+43
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Do you want to scale the mode radius?
+% If not, specify 4
+% Write 1 -> 0.4  2 -> 0.6   3 -> 0.8  4 -> 1.0   5 -> 1.2
+%       6 -> 1.4  7 -> 1.6   8 -> 1.8  9 -> 2.0
+% NB= No scaling write 4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Scaling radii factor
+4
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% if the user has chosen a default class and wants to
+% *change the mixing ratio* of each component then
+% the key-word Mixing ratios has to be followed by 1.
+% To leave the mixing ratios as they are in literature
+% 'User mixing ratio' keyword has to be followed by 0.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+User mixing ratio
+0
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% specify which type of mixing:
+% 1. Internal
+% 2. External
+% WARNING: impossible to do internal mixing with 'user defined' type
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Type of mixing
+2
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% only if the  'Type of class' is  in the range 1-4 and 15-18 the user
+% can specify  the relative humidity level.
+% The choice is between
+%  1.   0%
+%  2.  70%
+%  3.  80%
+%  4.  90%
+%  5.  95%
+%  6.  98%
+%  7.  99%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Relative humidity level
+1
+
+%----------------------------------------------------------------------
+% this part has to be filled ONLY if the class is an user-defined
+% one. The size distribution and the spectral refractive index
+% parameters have to be specified in the following order.
+%
+%   *name of aerosol properties* (character*30)
+%   *number of components*   *number of wavelength for calculation*
+% for each component:
+% size ditribution parameters: *mix ratio*   *mode radius*  *sigma*
+% refractive index:            *wavelength*  *ref. ind.(Re-Im)*
+
+User parameters
+Clean Maritime: equal standard class 4
+4 4
+0.6000 0.055 0.307
+0.300 1.395 5.83E-7
+0.400 1.385 9.90E-9
+0.860 1.372 1.09E-6
+2.25 1.334 8.50E-4
+0.0171 0.400 0.307
+0.300 1.395 5.83E-7
+0.400 1.385 9.90E-9
+0.860 1.372 1.09E-6
+2.25 1.334 8.50E-4
+0.001 3.30 0.307
+0.300 1.395 5.83E-7
+0.400 1.385 9.90E-9
+0.860 1.372 1.09E-6
+2.25 1.334 8.50E-4
+0.3819 0.0695 0.307
+0.300 1.469 1.00E-8
+0.400 1.440 1.00E-8
+0.860 1.425 1.79E-7
+2.25 1.370 1.80E-3
+
+
+
+2 4
+0.99 0.027 0.350
+0.300 1.530 8.00E-3
+0.400 1.530 5.90E-3
+0.860 1.520 1.08E-2
+2.25  1.360 9.70E-3
+0.01 0.160 0.400
+0.300 1.510 2.00E-6
+0.400 1.500 3.00E-8
+0.860 1.480 3.00E-6
+2.25  1.440 2.00E-3
+
+%---------------------------------------------------------------------
+
+Problem number
+1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% specify now the phase function tabulation you prefer:
+%    1.  Max 150 angles in three intervals
+%    2.  Gauss abscissas
+%    3.  you provide the angle tabulation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Phase function tabulation
+1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  if Phase function tabulation parameter = 1 you should provide
+%  the following informations:
+%     * step size within the first angle interval (in degrees)
+%     * upper limit of first angle interval (in degrees)
+%     * step size within second angle interval (in degrees)
+%     * upper limit of second angle interval (in degrees)
+%     * step size within third angle interval (in degrees)
+%       NB: the total number of angles <= ????
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Step size
+0.5, 10.0, 2.0, 170.0, 0.5
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   if Phase function tabulation parameter = 2 then you should provide
+%   the number of Gauss abscissae you want
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Gauss abscissae
+512
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   if Phase function tabulation parameter = 3 then you should specify
+%   * how many abscissae you want
+%   * the list of these abscissae
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Number abscissae
+112
+
+Abscissae
+  0.000, 0.100, 0.200, 0.300, 0.400, 0.500, 0.600, 0.700
+  0.800, 0.900, 1.000, 1.100, 1.200, 1.300, 1.400, 1.500
+  1.600     1.700     1.800     1.900     2.000     3.000     4.000     5.0
+  6.000     8.000    10.000    12.000    14.000    16.000    18.000    20.0
+ 22.000    24.000    26.000    28.000    30.000    32.000    34.000    36.0
+ 38.000    40.000    42.000    44.000    46.000    48.000    50.000    52.0
+ 54.000    56.000    58.000    60.000    62.000    64.000    66.000    68.0
+ 70.000    72.000    74.000    76.000    78.000    80.000    82.000    84.0
+ 86.000    88.000    90.000    92.000    94.000    96.000    98.000   100.0
+102.000   104.000   106.000   108.000   110.000   112.000   114.000   116.0
+118.000   120.000   122.000   124.000   126.000   128.000   130.000   132.0
+134.000   136.000   138.000   140.000   142.000   144.000   146.000   148.0
+150.000   152.000   154.000   156.000   158.000   160.000   162.000   164.0
+166.000   168.000   170.000   172.000   174.000   176.000   178.000   180.0
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  to compute the coefficients   x(i) i=0, elle
+%  of the Legendre expansion of the phase function specify 1
+%  after Legendre polynomial or any other integer number otherwise.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Legendre polynomial
+0
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  for Legendre polynomials you can specify the number of desired
+%  terms or leave it to 68.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Terms
+100
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Wavelenghts:
+%  "Type of wavelenghts" 1 if user defined values
+%  "Type of wavelenghts" 2 if default 9 values
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Type of wavelenghts
+1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  if "Type of wavelenghts" is 1 then
+%  specify how many wavelength in the range 0.300 - 40.000 mn
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Number wavelengths
+1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% here the wavelength values have to be specified.
+% IMPORTANT!!!  It is compulsory to specify 0.550
+%               because the extintion coefficient
+%               has to be normalized at that wavelength!
+%
+% specify 10 wavelength per row
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Wavelength values
+0.300

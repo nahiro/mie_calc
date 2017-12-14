@@ -1,0 +1,61 @@
+C AEROS_DB.PARS: aerosol components/class library parameters.
+C
+C*********   SIZE DISTRIBUTION PARAMETRS  ************
+C
+C     number of humidity levels
+        INTEGER         N_RH
+        PARAMETER       ( N_RH= 7 )
+C
+C     number of aerosol components
+        INTEGER         N_COMP
+c        PARAMETER       ( N_COMP = 28 )
+       PARAMETER       ( N_COMP = 32 )
+C
+C     number of aerosol components with log normal size distribution
+        INTEGER         N_LOGN_COMP
+        PARAMETER       ( N_LOGN_COMP=26 )
+C
+C     number of aerosol components with modified gamma size distribution
+        INTEGER         N_GAM_COMP
+        PARAMETER       ( N_GAM_COMP= N_COMP - N_LOGN_COMP )
+C
+C     number of parameters for a modified gamma size distribution
+        INTEGER         N_GAM_PAR
+        PARAMETER       ( N_GAM_PAR=4 )
+C
+C     number of type of mixing (internal-external)
+        INTEGER         NMIXTYPE
+        PARAMETER       ( NMIXTYPE=2)
+C*********     REFRACTIVE INDECES PARAMETERS   ****************
+C
+C     number of wavelengths
+        INTEGER         N_WLR
+        PARAMETER       ( N_WLR=59 )
+C
+C     number of different refractive indices spectral values
+        INTEGER         N_REF_INDX
+        PARAMETER       ( N_REF_INDX = 12 )
+C
+C     real and imaginary parts
+        INTEGER         N_INDX
+        PARAMETER       ( N_INDX = 2)
+C
+C
+C********     MIXING RATIOS PARAMETERS      ********************
+C
+C     number of aerosol classes and components
+C
+        INTEGER         N_CLASCOMP
+c        PARAMETER       ( N_CLASCOMP = 43 )
+        PARAMETER       ( N_CLASCOMP = 47 )
+C
+        INTEGER         N_CLASS
+        PARAMETER       ( N_CLASS = 19 )
+C
+C     maximum number of components in a class
+        INTEGER         MAX_COMP
+        PARAMETER       ( MAX_COMP = 4 )
+
+C     end of AEROS_DB.PARS
+
+
