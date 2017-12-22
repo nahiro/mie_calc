@@ -26,6 +26,7 @@ double	mie_lstp		= MIE_LSTP;			// Log10(R) step
 double	mie_lmod_com[MIE_MAXCOMP];				// Log10(Mode radius in um)
 double	mie_wsgm		= MIE_WSGM;			// Log10(R) width in sigma
 int	mie_nstp		= MIE_NSTP;			// #Steps
+int	cnt_anyang		= MIE_FALSE;			// Symmetric angle mode
 
 extern void miev0_();
 
@@ -93,7 +94,7 @@ int MieCalc(void)
   }
   PERFCT = MIE_FALSE;
   MIMCUT = DELTA;
-  ANYANG = MIE_FALSE;
+  ANYANG = cnt_anyang;
   NUMANG = mie_n_angl;
   PRNT[0] = (cnt_db>1?MIE_TRUE:MIE_FALSE);
   PRNT[1] = (cnt_db>0?MIE_TRUE:MIE_FALSE);
@@ -614,6 +615,31 @@ int Init(void)
     {
       mie_lmod_com[n] = log10(mie_rmod_com[n]);
     }
+  }
+  n = mie_n_angl/2;
+  if(mie_n_angl%2==1 && fabs(mie_angl[n]-90.0)>EPSILON)
+  {
+    cnt_anyang = MIE_TRUE;
+  }
+  else
+  {
+    for(i=0; i<n; i++)
+    {
+      if(fabs(mie_angl[mie_n_angl-1-i]+mie_angl[i]-180.0) > EPSILON)
+      {
+        cnt_anyang = MIE_TRUE;
+        break;
+      }
+      if(mie_angl[i+1] <= mie_angl[i])
+      {
+        cnt_anyang = MIE_TRUE;
+        break;
+      }
+    }
+  }
+  if(cnt_vb > 2)
+  {
+    fprintf(stderr,"cnt_anyang = %d\n",cnt_anyang);
   }
 
   return 0;
